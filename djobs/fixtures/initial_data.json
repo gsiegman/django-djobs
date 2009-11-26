@@ -1,0 +1,538 @@
+[
+    {
+        "pk": 1, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "accounting", 
+            "title": "Accounting"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "administrative", 
+            "title": "Administrative"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "advertising", 
+            "title": "Advertising"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "aerospace", 
+            "title": "Aerospace"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "agriculture", 
+            "title": "Agriculture"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "architecture", 
+            "title": "Architecture"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "arts-entertainment", 
+            "title": "Arts and Entertainment"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "automotive", 
+            "title": "Automotive"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "aviation-and-airlines", 
+            "title": "Aviation and Airlines"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "banking", 
+            "title": "Banking"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "biotechnology", 
+            "title": "Biotechnology"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "clergy", 
+            "title": "Clergy"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "construction-and-installation", 
+            "title": "Construction and Installation"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "consulting-services", 
+            "title": "Consulting Services"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "customer-services", 
+            "title": "Customer Services"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "education", 
+            "title": "Education"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "energy-and-utilities", 
+            "title": "Energy and Utilities"
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "engineering", 
+            "title": "Engineering"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "entry-level", 
+            "title": "Entry Level"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "environment", 
+            "title": "Environment"
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "executive-and-management", 
+            "title": "Executive and Management"
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "facilities-maintenance-and-repair", 
+            "title": "Facilities, Maintenance, and Repair"
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "financial-services", 
+            "title": "Financial Services"
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "fire-law-enforcement-and-security", 
+            "title": "Fire, Law Enforcement, and Security"
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "food-beverage-and-tobacco", 
+            "title": "Food, Beverage, and Tobacco"
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "government", 
+            "title": "Government"
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "graphic-arts", 
+            "title": "Graphic Arts"
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "healthcare-administrative", 
+            "title": "Healthcare -- Administrative"
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "healthcare-nursing", 
+            "title": "Healthcare -- Nursing"
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "healthcare-practitioners", 
+            "title": "Healthcare -- Practitioners"
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "healthcare-technicians", 
+            "title": "Healthcare -- Technicians"
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "hotel-gaming-leisure-and-travel", 
+            "title": "Hotel, Gaming, Leisure, and Travel"
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "human-resources", 
+            "title": "Human Resources"
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "insurance", 
+            "title": "Insurance"
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "internet-and-new-media", 
+            "title": "Internet and New Media"
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "it-all", 
+            "title": "IT -- All"
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "it-computers-hardware", 
+            "title": "IT -- Computers, Hardware"
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "it-computers-software", 
+            "title": "IT -- Computers, Software"
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "it-executive-consulting", 
+            "title": "IT -- Executive, Consulting"
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "it-manager", 
+            "title": "IT -- Manager"
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "it-networking", 
+            "title": "IT -- Networking"
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "legal-services", 
+            "title": "Legal Services"
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "library-services", 
+            "title": "Library Services"
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "logistics", 
+            "title": "Logistics"
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "manufacturing", 
+            "title": "Manufacturing"
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "marketing", 
+            "title": "Marketing"
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "materials-management", 
+            "title": "Materials Management"
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "media-broadcast", 
+            "title": "Media -- Broadcast"
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "media-print", 
+            "title": "Media -- Print"
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "mining", 
+            "title": "Mining"
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "non-profit-and-social-services", 
+            "title": "Non-Profit and Social Services"
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "personal-care-and-service", 
+            "title": "Personal Care and Service"
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "pharmaceuticals", 
+            "title": "Pharmaceuticals"
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "planning", 
+            "title": "Planning"
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "printing-and-publishing", 
+            "title": "Printing and Publishing"
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "public-relations", 
+            "title": "Public Relations"
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "purchasing", 
+            "title": "Purchasing"
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "real-estate", 
+            "title": "Real Estate"
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "restaurant-and-food-services", 
+            "title": "Restaurant and Food Services"
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "retailwholesale", 
+            "title": "Retail/Wholesale"
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "sales", 
+            "title": "Sales"
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "science-and-research", 
+            "title": "Science and Research"
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "skilled-and-trades", 
+            "title": "Skilled and Trades"
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "sports-and-recreation", 
+            "title": "Sports and Recreation"
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "telecommunications", 
+            "title": "Telecommunications"
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "training", 
+            "title": "Training"
+        }
+    }, 
+    {
+        "pk": 67, 
+        "model": "djobs.jobcategory", 
+        "fields": {
+            "slug": "transportation-and-warehousing", 
+            "title": "Transportation and Warehousing"
+        }
+    }
+]

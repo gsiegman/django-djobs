@@ -1,0 +1,7 @@
+<h1>{{ category }}</h1>
+
+<ul id="job_list">
+{% for object in object_list %}
+	<li class="job">{{ object }}</li>
+{% endfor %}
+</ul>

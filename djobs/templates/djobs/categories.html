@@ -1,0 +1,7 @@
+<ul id="categories">
+{% for category in categories %}
+	<li class="category">
+		<a href="{{ category.get_absolute_url }}">{{ category }} ({{ category.active_job_count }})</a>
+	</li>
+{% endfor %}
+</ul>
