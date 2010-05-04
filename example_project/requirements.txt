@@ -1,0 +1,4 @@
+-e svn+http://code.djangoproject.com/svn/django/trunk/#egg=django
+
+south==0.7
+pil

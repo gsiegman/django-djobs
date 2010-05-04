@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h1>{{ category }}</h1>
 
 <ul id="job_list">
@@ -5,3 +8,4 @@
 	<li class="job">{{ object }}</li>
 {% endfor %}
 </ul>
+{% endblock %}
