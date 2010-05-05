@@ -1,8 +1,75 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ object.job.title }}</h1>
+<div class="main-content">
+	<h2>{{ object.title }}</h2>
 
-<label for="job_description">Description:</label>
-<p id="job_description">{{ object.job.description  }}</p>
+	{% if object.employer %}
+	<label for="job_employer">Employer:</label>
+	<p id="job_employer">{{ object.employer }}</p>
+	{% endif %}
+
+	{% if object.description %}
+	<label for="job_description">Description:</label>
+	<p id="job_description">{{ object.description  }}</p>
+	{% endif %}
+
+	{% if object.category %}
+	<label for="job_category">Category:</label>
+	<p id="job_category"><a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></p>
+	{% endif %}
+
+	{% if object.created_date %}
+	<label for="job_created_date">Date listed:</label>
+	<p id="job_created_date">{{ object.created_date|date:"F j, Y" }} <em>({{ object.created_date|timesince }} ago)</em></p>
+	{% endif %}
+
+	{% if object.employment_type %}
+	<label for="job_employment_type">Employment type:</label>
+	<p id="job_employment_type">{{ object.get_employment_type_display }}</p>
+	{% endif %}
+
+	{% if object.employment_level %}
+	<label for="job_employment_level">Employment level:</label>
+	<p id="job_employment_level">{{ object.get_employment_level_display }}</p>
+	{% endif %}
+
+	<label for="job_employment_level">Contact:</label>
+	<p id="job_employment_level">
+	
+		{{ object.contact }}
+		
+		{% if object.contact.phone %}
+		<br />
+		{{ object.contact.phone }}
+		{% endif %}
+		
+		{% if object.contact.email %}
+		<br />
+		<a href="mailto://{{ object.contact.email }}">{{ object.contact.email }}</a>
+		{% endif %}
+		
+		{% if object.contact.url %}
+		<br />
+		<a href="{{ object.contact.url }}">{{ object.contact.url }}</a>
+		{% endif %}
+		
+	</p>
+	
+	{% if object.location %}
+	<label for="job_location">Location:</label>
+	<p id="job_location">{{ object.location }}</p>
+	{% endif %}
+	
+</div>
+<div class="sidebar">
+	<img class="employer-image" src="{{ object.employer.logo.display.url }}" alt="{{ object.employer }}" />
+
+	<h3>{{ object.employer }}</h3>
+	
+	{% if object.employer.profile %}
+	<p>{{ object.employer.profile }}</p>
+	{% endif %}
+	
+</div>
 {% endblock %}

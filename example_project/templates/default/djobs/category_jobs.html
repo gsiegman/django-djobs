@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ category }}</h1>
+<div class="main-content">
+	<h2>{{ category }}</h2>
 
-<ul id="job_list">
-{% for object in object_list %}
-	<li class="job">{{ object }}</li>
-{% endfor %}
-</ul>
+	<ul id="job_list">
+	{% for object in object_list %}
+		<li class="job"><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+	{% endfor %}
+	</ul>
+</div>
+<div class="sidebar">
+	<h3>Recently added in {{ category }}</h2>
+	<ul>
+		<li><a href="#">Forklift Operator</a></li>
+	</ul>
+</div>
 {% endblock %}

@@ -1,0 +1,10 @@
+ul#categories:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden; }
+
+ul#categories li.category { width: 50%; float: left; }
+
+.employer-image { margin-bottom: 20px; }
