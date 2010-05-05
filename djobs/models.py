@@ -109,3 +109,6 @@ class Job(models.Model):
         
     def __unicode__(self):
         return '%s at %s' % (self.title, self.employer.name)
+        
+    def get_absolute_url(self):
+        return reverse('djobs_job_detail', args=[self.id])
