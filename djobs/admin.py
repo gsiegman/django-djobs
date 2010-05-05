@@ -1,5 +1,5 @@
 from django.contrib import admin
-from djobs.models import Contact, Employer, Job, JobCategory, Location
+from djobs.models import Contact, Employer, Job, JobCategory, Location, EmployerLogo
 
 admin.site.register(Employer)
 
@@ -15,3 +15,5 @@ admin.site.register(JobCategory, JobCategoryAdmin)
 admin.site.register(Location)
 
 admin.site.register(Contact)
+
+admin.site.register(EmployerLogo)

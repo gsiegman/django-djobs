@@ -5,7 +5,8 @@ from django.contrib.localflavor.us.models import PhoneNumberField
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db.models import F
-
+from imagekit.models import ImageModel
+from taggit.managers import TaggableManager
 import datetime
 
 EMPLOYMENT_TYPE_CHOICES = (
@@ -52,10 +53,26 @@ class Contact(models.Model):
     def __unicode__(self):
         return self.name
 
+class EmployerLogo(ImageModel):
+    """
+    A company logo for an employer.
+    """
+    name = models.CharField(max_length=100)
+    original_image = models.ImageField(upload_to='photos/employer_logos')
+    caption = models.TextField()
+    tags = TaggableManager()
+
+    class IKOptions:
+        spec_module = 'djobs.specs'
+        image_field = 'original_image'
+
+    def __unicode__(self):
+        return self.name
+
 class Employer(models.Model):
     name = models.CharField(_('name'), max_length=50, help_text=_("Max 50 chars. Required."))
     slug = models.SlugField(_('slug'), help_text=_("Only letters, numbers, or hyphens. Required."))
-    logo = models.ImageField(_('logo'), upload_to='djobs/employer_logos')
+    logo = models.ForeignKey(EmployerLogo, verbose_name=_('logo'))
     profile = models.TextField(_('profile'), blank=True)
     administrator = models.ForeignKey(User)
     

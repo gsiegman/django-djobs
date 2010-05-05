@@ -2,3 +2,5 @@
 
 south==0.7
 pil
+django-imagekit==0.3.3
+django-taggit==0.4.0

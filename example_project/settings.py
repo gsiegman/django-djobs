@@ -90,4 +90,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'djobs',
+    'imagekit',
+    'taggit',
 )
