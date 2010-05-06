@@ -24,7 +24,7 @@
 		
 		{% for item in recent_jobs %}
 			<li>
-				<a href="{{ item.get_absolute_url }}">{{ item.title }}</a><br />
+				<a href="{{ item.get_absolute_url }}">{{ item.title }} at {{ item.employer }}</a><br />
 				<em>Added {{ item.created_date|timesince }} ago</em>
 			</li>
 		{% endfor %}

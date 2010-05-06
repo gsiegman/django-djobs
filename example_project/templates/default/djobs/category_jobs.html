@@ -11,7 +11,15 @@
 	<ul id="job_list">
 
 	{% for object in object_list %}
-		<li class="job"><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+		<li class="job">
+			<a href="{{ object.get_absolute_url }}">{{ object }}</a> 
+			<ul class="clearfix">
+				<li>Added {{ object.created_date|timesince }} ago</li>
+				<li>{{ object.get_employment_type_display }} </li>
+				<li>{{ object.get_employment_level_display }}</li>
+			</ul>
+			<p>{{ object.description|safe|striptags|truncatewords:"30" }} <a href="{{ object.get_absolute_url }}">more</a> </p>
+		</li>
 	{% endfor %}
 	
 	</ul>
@@ -33,7 +41,7 @@
 	
 	{% for item in recent_jobs %}
 		<li>
-			<a href="{{ item.get_absolute_url }}">{{ item.title }}</a><br />
+			<a href="{{ item.get_absolute_url }}">{{ item.title }} at {{ item.employer }}</a><br />
 			<em>Added {{ item.created_date|timesince }} ago</em>
 		</li>
 	{% endfor %}

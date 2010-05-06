@@ -5,14 +5,24 @@
 	<h2>{{ employer }}</h2>
 	<p>{{ employer.profile }}</p>
 	
-	<h4>Jobs listed with {{ employer }}</h4>
+	<h2>Jobs listed with {{ employer }}</h2>
 	
 	{% if object_list %}
 	
 	<ul id="job_list">
+	
 	{% for object in object_list %}
-		<li class="job"><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+		<li class="job">
+			<a href="{{ object.get_absolute_url }}">{{ object.title }}</a> 
+			<ul class="clearfix">
+				<li>Added {{ object.created_date|timesince }} ago</li>
+				<li>{{ object.get_employment_type_display }} </li>
+				<li>{{ object.get_employment_level_display }}</li>
+			</ul>
+			<p>{{ object.description|safe|striptags|truncatewords:"30" }} <a href="{{ object.get_absolute_url }}">more</a> </p>
+		</li>
 	{% endfor %}
+	
 	</ul>
 	
 	{% else %}
