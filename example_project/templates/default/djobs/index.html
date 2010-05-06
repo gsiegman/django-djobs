@@ -14,15 +14,24 @@
 	
 		<h2>About Us</h2>
 		
-		<p>Whether you're new to the job market or looking to advance in your present career, MidwestCareers.com is the place to start for your career goals and aspirations.</p>
+		<p>Whether you're new to the job market or looking to advance in your present career, MidwestCareers.com is the place to pursue your career goals and aspirations.</p>
+		
+		{% get_recent_jobs 10 as recent_jobs %}
+		{% if recent_jobs %}
 		
 		<h2>Newest Additions</h2>
-		
 		<ul>
-			{% get_recent_jobs 5 as recent_jobs %}
-			{% for recent_job in recent_jobs %}
-			<li><a href="{{ recent_job.get_absolute_url }}">{{ recent_job }}</a></li>
-			{% endfor %}
+		
+		{% for item in recent_jobs %}
+			<li>
+				<a href="{{ item.get_absolute_url }}">{{ item.title }}</a><br />
+				<em>Added {{ item.created_date|timesince }} ago</em>
+			</li>
+		{% endfor %}
+		
 		</ul>
+		
+		{% endif %}
+	
 	</div>
 {% endblock %}
