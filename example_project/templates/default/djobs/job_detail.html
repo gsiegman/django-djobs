@@ -6,7 +6,7 @@
 
 	{% if object.employer %}
 	<label for="job_employer">Employer:</label>
-	<p id="job_employer">{{ object.employer }}</p>
+	<p id="job_employer"><a href="{{ object.employer.get_absolute_url }}">{{ object.employer }}</a></p>
 	{% endif %}
 
 	{% if object.description %}
@@ -68,7 +68,7 @@
 	<h3>{{ object.employer }}</h3>
 	
 	{% if object.employer.profile %}
-	<p>{{ object.employer.profile }}</p>
+	<p>{{ object.employer.profile|truncatewords:"50" }} <a href="{{ object.employer.get_absolute_url }}">more...</a></p>
 	{% endif %}
 	
 </div>

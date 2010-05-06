@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-content">
+	<h2>{{ employer }}</h2>
+	<p>{{ employer.profile }}</p>
+	<h4>Jobs listed with {{ employer }}</h4>
+	<ul id="job_list">
+	{% for object in object_list %}
+		<li class="job"><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+	{% endfor %}
+	</ul>
+</div>
+<div class="sidebar">
+	<img class="employer-image" src="{{ employer.logo.display.url }}" alt="{{ employer }}" />
+</div>
+{% endblock %}
