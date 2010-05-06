@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load djobs_tags %}
+
 {% block content %}
 <div class="main-content">
 	<h2>{{ category }}</h2>
@@ -13,7 +15,10 @@
 <div class="sidebar">
 	<h3>Recently added in {{ category }}</h2>
 	<ul>
-		<li><a href="#">Forklift Operator</a></li>
+		{% get_recent_jobs_for_obj category 5 as recent_jobs %}
+		{% for recent_job in recent_jobs %}
+		<li><a href="{{ recent_job.get_absolute_url }}">{{ recent_job }}</a></li>
+		{% endfor %}
 	</ul>
 </div>
 {% endblock %}

@@ -24,11 +24,10 @@
 		<h2>Newest Additions</h2>
 		
 		<ul>
-			<li>
-				<a href="#">Forklift Operator</a>
-			</li>
+			{% get_recent_jobs 5 as recent_jobs %}
+			{% for recent_job in recent_jobs %}
+			<li><a href="{{ recent_job.get_absolute_url }}">{{ recent_job }}</a></li>
+			{% endfor %}
 		</ul>
-		
-		
 	</div>
 {% endblock %}
