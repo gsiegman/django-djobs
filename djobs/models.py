@@ -118,6 +118,11 @@ class Employer(models.Model):
         
     def __unicode__(self):
         return self.name
+        
+    def get_absolute_url(self):
+        return reverse('djobs_employer_jobs',
+            args=[self.id]
+        )
 
 class JobCategory(models.Model):
     title = models.CharField(_('title'), 
@@ -156,6 +161,9 @@ class Job(models.Model):
     description = models.TextField(_('description'), 
         help_text=_("Required.")
     )
+    #description_html = models.TextField(_('description_html'),
+    #    editable=False
+    #)
     category = models.ForeignKey(JobCategory, 
         related_name='jobs'
     )

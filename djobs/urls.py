@@ -13,6 +13,10 @@ urlpatterns += patterns('djobs.views',
         'category_jobs', 
         name='djobs_category_jobs'
     ),
+    url(r'^employers/(?P<id>\d+)/$', 
+        'employer_jobs', 
+        name='djobs_employer_jobs'
+    ),
     url(r'^jobs/(?P<id>\d+)/$', 
         'job_detail', 
         name='djobs_job_detail'
