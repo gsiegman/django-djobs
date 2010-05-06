@@ -193,6 +193,7 @@ class Job(models.Model):
     class Meta:
         verbose_name = _('job')
         verbose_name_plural = _('jobs')
+        ordering = ('-created_date',)
         
     def __unicode__(self):
         return '%s at %s' % (self.title, self.employer.name)
