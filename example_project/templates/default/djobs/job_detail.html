@@ -68,7 +68,9 @@
 	<h3>{{ object.employer }}</h3>
 	
 	{% if object.employer.profile %}
-	<p>{{ object.employer.profile|truncatewords:"50" }} <a href="{{ object.employer.get_absolute_url }}">more...</a></p>
+	<p>
+		{{ object.employer.profile|truncatewords:"50" }} <a href="{{ object.employer.get_absolute_url }}">more...</a>
+	</p>
 	{% endif %}
 	
 </div>

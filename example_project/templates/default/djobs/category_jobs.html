@@ -6,19 +6,40 @@
 <div class="main-content">
 	<h2>{{ category }}</h2>
 
+	{% if object_list%}
+
 	<ul id="job_list">
+
 	{% for object in object_list %}
 		<li class="job"><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
 	{% endfor %}
+	
 	</ul>
+	
+	{% else %}
+	
+	<div class="notice">There are currently no listings in this category.</div>
+	
+	{% endif %}
+	
 </div>
 <div class="sidebar">
+	
+	{% get_recent_jobs_for_obj category 10 as recent_jobs %}
+	{% if  recent_jobs %}
+	
 	<h3>Recently added in {{ category }}</h2>
 	<ul>
-		{% get_recent_jobs_for_obj category 5 as recent_jobs %}
-		{% for recent_job in recent_jobs %}
-		<li><a href="{{ recent_job.get_absolute_url }}">{{ recent_job }}</a></li>
-		{% endfor %}
+	
+	{% for item in recent_jobs %}
+		<li>
+			<a href="{{ item.get_absolute_url }}">{{ item.title }}</a><br />
+			<em>Added {{ item.created_date|timesince }} ago</em>
+		</li>
+	{% endfor %}
 	</ul>
+	
+	{% endif %}
+	
 </div>
 {% endblock %}

@@ -4,12 +4,25 @@
 <div class="main-content">
 	<h2>{{ employer }}</h2>
 	<p>{{ employer.profile }}</p>
+	
 	<h4>Jobs listed with {{ employer }}</h4>
+	
+	{% if object_list %}
+	
 	<ul id="job_list">
 	{% for object in object_list %}
 		<li class="job"><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
 	{% endfor %}
 	</ul>
+	
+	{% else %}
+	
+	<div class="notice">
+		There are no jobs listed with {{ employer }}.
+	</div>
+	
+	{% endif %}
+	
 </div>
 <div class="sidebar">
 	<img class="employer-image" src="{{ employer.logo.display.url }}" alt="{{ employer }}" />

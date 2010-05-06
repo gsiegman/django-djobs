@@ -8,3 +8,9 @@ ul#categories:after {
 ul#categories li.category { width: 50%; float: left; }
 
 .employer-image { margin-bottom: 20px; }
+
+.sidebar > ul { list-style-type: none; margin: 0; padding: 0; }
+
+ul#job_list { list-style-type: none; margin: 0; padding: 0; }
+
+	ul#job_list > li, .sidebar > ul > li	{ padding-bottom: 10px; }
