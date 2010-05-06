@@ -1,11 +1,11 @@
 from django.views.generic.list_detail import object_list, object_detail
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 
 from djobs.models import Job, JobCategory, Employer
 import datetime
 
 def category_jobs(request, slug):
-    category = JobCategory.objects.get(slug=slug)
+    category = get_object_or_404(JobCategory, slug=slug)
     jobs = Job.active.filter(category=category)
     
     return object_list(request, 
@@ -16,7 +16,7 @@ def category_jobs(request, slug):
     )
     
 def employer_jobs(request, id):
-    employer = Employer.objects.get(pk=1)
+    employer = get_object_or_404(Employer, pk=id)
     jobs = Job.active.filter(employer=employer)
     
     return object_list(request, 
