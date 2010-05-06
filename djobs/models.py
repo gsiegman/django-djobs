@@ -150,6 +150,8 @@ class JobCategory(models.Model):
         return len(Job.active.filter(category=self))
 
 class ActiveJobManager(models.Manager):
+    use_for_related_fields = True
+    
     def get_query_set(self):
         return super(ActiveJobManager, self).get_query_set().filter(created_date__gte=datetime.datetime.now() - datetime.timedelta(days=30))
 
@@ -177,7 +179,9 @@ class Job(models.Model):
         choices=EMPLOYMENT_LEVEL_CHOICES, 
         help_text=_("Required.")
     )
-    employer = models.ForeignKey(Employer)
+    employer = models.ForeignKey(Employer,
+        related_name='jobs'
+    )
     location = models.ForeignKey(Location)
     contact = models.ForeignKey(Contact)
     allow_applications = models.BooleanField(_('allow applications'))
