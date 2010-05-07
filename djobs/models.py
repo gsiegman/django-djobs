@@ -5,6 +5,7 @@ from django.contrib.localflavor.us.models import PhoneNumberField
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from imagekit.models import ImageModel
+from markdown import markdown
 from taggit.managers import TaggableManager
 import datetime
 
@@ -163,9 +164,10 @@ class Job(models.Model):
     description = models.TextField(_('description'), 
         help_text=_("Required.")
     )
-    #description_html = models.TextField(_('description_html'),
-    #    editable=False
-    #)
+    description_html = models.TextField(_('description_html'),
+        editable=False,
+        blank=True
+    )
     category = models.ForeignKey(JobCategory, 
         related_name='jobs'
     )
@@ -197,6 +199,12 @@ class Job(models.Model):
         
     def __unicode__(self):
         return '%s at %s' % (self.title, self.employer.name)
+        
+    def save(self, *args, **kwargs):
+        self.description_html = markdown(self.description)
+        super(Job, self).save(kwargs.get('force_insert', False),
+            kwargs.get('force_update', False)
+        )
         
     def get_absolute_url(self):
         return reverse('djobs_job_detail', args=[self.id])

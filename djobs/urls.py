@@ -21,4 +21,12 @@ urlpatterns += patterns('djobs.views',
         'job_detail', 
         name='djobs_job_detail'
     ),
+    url(r'^jobs/create/$',
+        'create_job',
+        name='djobs_create_job'
+    ),
+    url(r'^jobs/edit/(?P<job_id>\d+)/$',
+        'edit_job',
+        name='djobs_edit_job'
+    ),
 )
