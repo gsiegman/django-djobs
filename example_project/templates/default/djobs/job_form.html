@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{% if add %}Create{% else %}Edit{% endif %} Job
+{% endblock %}
+
+{% block content %}
+	<h1>{% if add %}Create{% else %}Edit{% endif %} Job</h1>
+	<form id="create-job-form" action="" method="POST">
+		<table>
+			<tr><td>Job Info:</td></tr>
+			{{ job_form.as_table }}
+			
+			<tr><td>Location Info:</td></tr>
+			{{ location_form.as_table }}
+			
+			<tr><td>Contact Info:</td></tr>
+			{{ contact_form.as_table }}
+			
+			<tr><td><input type="submit" value="Save Job" /></td></tr>
+		</table>
+	</form>
+{% endblock %}
