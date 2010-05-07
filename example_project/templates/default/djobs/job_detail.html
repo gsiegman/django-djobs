@@ -11,7 +11,7 @@
 
 	{% if object.description %}
 	<label for="job_description">Description:</label>
-	<p id="job_description">{{ object.description  }}</p>
+	<p id="job_description">{{ object.description_html|safe }}</p>
 	{% endif %}
 
 	{% if object.category %}
@@ -46,7 +46,7 @@
 		
 		{% if object.contact.email %}
 		<br />
-		<a href="mailto://{{ object.contact.email }}">{{ object.contact.email }}</a>
+		<a href="mailto:{{ object.contact.email }}">{{ object.contact.email }}</a>
 		{% endif %}
 		
 		{% if object.contact.url %}
