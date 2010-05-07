@@ -1,9 +1,11 @@
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.views.generic.list_detail import object_list, object_detail
 from django.views.generic.create_update import create_object, update_object
 from djobs.forms import JobForm, ContactForm, LocationForm
-from djobs.models import Job, JobCategory, Employer
+from djobs.models import Job, JobCategory, Employer, Location
 import datetime
 
 def category_jobs(request, slug, **kwargs):
@@ -49,14 +51,40 @@ def create_job(request, **kwargs):
     template_name = kwargs.get("template_name", "djobs/job_form.html")
     
     if request.method == 'POST':
+        location_form = LocationForm(request.POST)
+        
+        if location_form.is_valid():
+            location = location_form.save()
+        
+        contact_form = ContactForm(request.POST)
+        
+        if contact_form.is_valid():
+            contact = contact_form.save()
+        
         job_form = JobForm(request.POST)
         job_form.fields['employer'].queryset = job_form.fields['employer'].queryset.filter(administrator=request.user)
         
-        location_form = LocationForm(request.POST)
-        contact_form = ContactForm(request.POST)
-
         if job_form.is_valid():
-            return HttpResponseRedirect(reverse('djobs_index_view'))
+            title = job_form.cleaned_data['title']
+            description = job_form.cleaned_data['description']
+            category = job_form.cleaned_data['category']
+            employment_type = job_form.cleaned_data['employment_type']
+            employment_level = job_form.cleaned_data['employment_level']
+            employer = job_form.cleaned_data['employer']
+            
+            new_job = Job.objects.create(title=title,
+                description=description,
+                category=category,
+                employment_type=employment_type,
+                employment_level=employment_level,
+                employer=employer,
+                location=location,
+                contact=contact
+            )
+            
+            return HttpResponseRedirect(reverse('djobs_edit_job',
+                args=[new_job.id]
+            ))
     else:
         job_form = JobForm()
         job_form.fields['employer'].queryset = job_form.fields['employer'].queryset.filter(administrator=request.user)
@@ -80,17 +108,32 @@ def edit_job(request, job_id, **kwargs):
     job = get_object_or_404(Job, pk=job_id)
     
     if request.method == 'POST':
+        location_form = LocationForm(request.POST)
+        
+        if location_form.is_valid():
+            job.location = location_form.save()
+        
+        contact_form = ContactForm(request.POST)
+        
+        if contact_form.is_valid():
+            job.contact = contact_form.save()
+        
         job_form = JobForm(request.POST)
         job_form.fields['employer'].queryset = job_form.fields['employer'].queryset.filter(administrator=request.user)
         
-        location_form = LocationForm(request.POST)
-        contact_form = ContactForm(request.POST)
-
         if job_form.is_valid():
-            return HttpResponseRedirect(reverse('djobs_index_view'))
-        
-        if form.is_valid():
-            return HttpResponseRedirect(reverse('djobs_index_view'))
+            job.title = job_form.cleaned_data['title']
+            job.description = job_form.cleaned_data['description']
+            job.category = job_form.cleaned_data['category']
+            job.employment_type = job_form.cleaned_data['employment_type']
+            job.employment_level = job_form.cleaned_data['employment_level']
+            job.employer = job_form.cleaned_data['employer']
+            
+            job.save()
+            
+            return HttpResponseRedirect(reverse('djobs_edit_job',
+                args=[job.id]
+            ))
     else:
         job_form = JobForm({'title': job.title, 'description': job.description,
             'category': job.category.id,
@@ -100,8 +143,17 @@ def edit_job(request, job_id, **kwargs):
         })
         job_form.fields['employer'].queryset = job_form.fields['employer'].queryset.filter(administrator=request.user)
         
-        location_form = LocationForm()
-        contact_form = ContactForm()
+        location_form = LocationForm({'address': job.location.address,
+            'city': job.location.city,
+            'state': job.location.state,
+            'zip': job.location.zip,
+        })
+        contact_form = ContactForm({'name': job.contact.name,
+            'email': job.contact.email,
+            'phone': job.contact.phone,
+            'fax': job.contact.fax,
+            'url': job.contact.url,
+        })
         
     return render_to_response(template_name, {
             'job_form': job_form,
