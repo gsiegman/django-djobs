@@ -8,13 +8,16 @@ class JobForm(forms.Form):
     title = forms.CharField(max_length=50,
         help_text=_("Max 50 chars. Required.")
     )
-    description = forms.CharField(widget=forms.widgets.Textarea,
-        help_text=_("Required.")
+    description = forms.CharField(widget=forms.widgets.Textarea(),
+        help_text=_("Required."),
     )
     category = forms.ModelChoiceField(queryset=JobCategory.objects.all())
     employment_type = forms.ChoiceField(EMPLOYMENT_TYPE_CHOICES)
     employment_level = forms.ChoiceField(EMPLOYMENT_LEVEL_CHOICES)
     employer = forms.ModelChoiceField(queryset=Employer.objects.all())
+
+    class Media:
+        js = ('js/wmd/wmd.js',)
         
 class LocationForm(forms.ModelForm):
     class Meta:
