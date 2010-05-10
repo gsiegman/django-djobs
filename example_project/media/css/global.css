@@ -79,7 +79,8 @@ a:visited, a:hover { color: #663366; }
 	text-transform: uppercase;
 	font-weight: bold;
 	color: #7F7F7F;
-	letter-spacing: 1.5px; }
+	letter-spacing: 1.5px;
+	margin: 1.5em 0 .75em 0; }
  
 .wrap-inner .executives .column {
 	margin-right: 50px;

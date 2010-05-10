@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-    	<title>{% block title %}{% endblock %}</title>
+    	<title>{% block title %}{% endblock %} - midwestcareers.com</title>
         <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection" />
         <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/print.css" type="text/css" media="print" />
 	<link rel="stylesheet" href="{{ MEDIA_URL }}css/global.css" type="text/css" media="screen, projection" />
@@ -14,6 +14,7 @@
 		<ul class="reverse top-bar clearfix">
 			{% if user.is_authenticated %}
 			<li><a href="/accounts/password/change">Change Password</a></li>
+			<li><a href="/accounts/password/reset">Reset Password</a></li>
 			<li><a href="/accounts/logout">Log Out</a></li>
 			{% else %}
 			<li><a href="/accounts/login">Log In</a></li>

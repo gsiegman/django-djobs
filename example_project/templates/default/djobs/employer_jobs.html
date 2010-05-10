@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
+{% block title %}
+	{{ employer }}
+{% endblock %}
+
 {% block content %}
 <div class="main-content">
 	<h2>{{ employer }}</h2>
 	<p>{{ employer.profile }}</p>
 	
-	<h2>Jobs listed with {{ employer }}</h2>
+	<h2>Listed Jobs</h2>
 	
 	{% if object_list %}
 	
@@ -20,7 +24,6 @@
 				<li>{{ object.get_employment_level_display }}</li>
 				<li>{{ object.location.city }}, {{ object.location.state }}</li>
 			</ul>
-			<p>{{ object.description_html|safe|striptags|truncatewords:"30" }} <a href="{{ object.get_absolute_url }}">more</a> </p>
 		</li>
 	{% endfor %}
 	
@@ -37,5 +40,14 @@
 </div>
 <div class="sidebar">
 	<img class="employer-image" src="{{ employer.logo.display.url }}" alt="{{ employer }}" />
+	
+
+	{% if user == employer.administrator %}
+	
+	<h3>Actions</h3>
+	<ul>
+		<li><a href="/employers/edit/{{ employer.id }}">Edit employer</a></li>
+	</ul>
+	{% endif %}
 </div>
 {% endblock %}

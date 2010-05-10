@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title %}
+	Log in
+{% endblock %}
+
 {% block content %}
 <div class="main-content">
 	<h2>Log In</h2>
@@ -10,9 +14,11 @@
 			{% include "registration/form_snippet.html" %}
 		{% endfor %}
 		</dl>
-		<input class="submit" type="submit" value="login" />
+		<input class="submit" type="submit" value="Log in" />
 		<input type="hidden" name="next" value="{{ next }}" />
 	</form>
+	<p></p>
+	<p><a href="/accounts/register">Don't have a login? Click here to register.</a></p>
 </div>
 <div class="sidebar"></div>
 {% endblock %}

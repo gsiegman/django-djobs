@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title %}
+	{{ object.title }}
+{% endblock %}
+
 {% block content %}
 <div class="main-content">
 	<h2>{{ object.title }}</h2>
@@ -64,6 +68,14 @@
 </div>
 <div class="sidebar">
 	<img class="employer-image" src="{{ object.employer.logo.display.url }}" alt="{{ object.employer }}" />
+
+	{% if user == object.employer.administrator %}
+	
+	<h3>Actions</h3>
+	<ul>
+		<li><a href="/jobs/edit/{{ object.id }}">Edit</a></li>
+	</ul>
+	{% endif %}
 
 	<h3>{{ object.employer }}</h3>
 	
