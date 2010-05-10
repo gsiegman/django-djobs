@@ -89,7 +89,13 @@ a:visited, a:hover { color: #663366; }
  
 	.wrap-inner .executives .column dd { margin: 0; }
  
-.reverse.top-bar { height: 7px; }
+.reverse.top-bar { padding: 3px 5px; text-align: right; margin: 0; list-style-type: none; }
+
+	.reverse.top-bar li { padding-left: 20px; float: right; }
+
+	.reverse.top-bar a { color: #fff; text-decoration: none; font-weight: bold; font-size: .95em; }
+	
+	.reverse.top-bar a:hover { text-decoration: underline; }
  
 .reverse {
 	background-color: #07447F;
