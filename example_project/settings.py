@@ -12,6 +12,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+#Registration Info
+ACCOUNT_ACTIVATION_DAYS = 10
+
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'djobs.db'             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
@@ -93,4 +96,5 @@ INSTALLED_APPS = (
     'djobs',
     'imagekit',
     'taggit',
+    'registration',
 )
