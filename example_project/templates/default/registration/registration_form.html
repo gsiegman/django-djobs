@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="post" action="{% url registration_register %}">
-	<table>
-	{{ form.as_table }}
-	</table>
-	<input type="submit" value="register" />
-</form>
+<div class="main-content">
+	<h2>Register</h2>
+	<form method="post" class="form" action="{% url registration_register %}">
+
+		<dl>
+		 {% for field in form %}
+			{% include "registration/form_snippet.html" %}
+		{% endfor %}
+		</dl>
+			
+		<input class="submit" type="submit" value="register" />
+	</form>
+</div>
+<div class="sidebar">
+	<h3>About Us</h3>
+	<p>Registration is currently limited to employers only. Job seeker registration is currently closed.</p>
+</div>
 {% endblock %}

@@ -11,7 +11,15 @@
 	{% block head_extra %}{% endblock %}
     </head>
     <body class="mwcradio">
-		<div class="reverse top-bar"></div>
+		<ul class="reverse top-bar clearfix">
+			{% if user.is_authenticated %}
+			<li><a href="/accounts/password/change">Change Password</a></li>
+			<li><a href="/accounts/logout">Log Out</a></li>
+			{% else %}
+			<li><a href="/accounts/login">Log In</a></li>
+			<li><a href="/accounts/register">Register</a></li>
+			{% endif %}
+		</ul>
 		<div id="header">
 			<div class="header-inner">
 				<h1><a class="logo" href="/"><img src="{{ MEDIA_URL }}themes/01/logo.png" alt="Midwest Communications, Inc. Logo" title="Midwest Communications, Inc." /></a></h1>
