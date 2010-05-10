@@ -6,3 +6,4 @@ docutils
 markdown==2.0.3
 django-imagekit==0.3.3
 django-taggit==0.4.0
+django-registration==0.7
