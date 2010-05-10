@@ -1,4 +1,7 @@
 from django.conf.urls.defaults import *
+from django.contrib.auth.decorators import login_required
+from djobs.views import create_job, edit_job, \
+    create_employer, edit_employer
 
 urlpatterns = patterns('django.views.generic.simple',
     url(r'^$', 
@@ -20,13 +23,24 @@ urlpatterns += patterns('djobs.views',
     url(r'^jobs/(?P<id>\d+)/$', 
         'job_detail', 
         name='djobs_job_detail'
-    ),
+    ),   
+)
+
+urlpatterns += patterns('',
     url(r'^jobs/create/$',
-        'create_job',
+        login_required(create_job),
         name='djobs_create_job'
     ),
     url(r'^jobs/edit/(?P<job_id>\d+)/$',
-        'edit_job',
+        login_required(edit_job),
         name='djobs_edit_job'
+    ),
+    url(r'^employers/create/$',
+        login_required(create_employer),
+        name='djobs_create_employer'
+    ),
+    url(r'^employers/edit/(?P<employer_id>\d+)/$',
+        login_required(edit_employer),
+        name='djobs_edit_employer'
     ),
 )

@@ -31,3 +31,15 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
     
+class EmployerForm(forms.Form):
+    name = forms.CharField(max_length=50, 
+        help_text=_("Max 50 chars. Required.")
+    )
+    logo = forms.ImageField(required=False)
+    profile = forms.CharField(widget=forms.widgets.Textarea(),
+        required=False,
+        help_text=_("Not required."),
+    )
+    
+    class Media:
+        js = ('js/wmd/wmd.js',)

@@ -1,11 +1,12 @@
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.template.defaultfilters import slugify
 from django.views.generic.list_detail import object_list, object_detail
 from django.views.generic.create_update import create_object, update_object
-from djobs.forms import JobForm, ContactForm, LocationForm
-from djobs.models import Job, JobCategory, Employer, Location
+from djobs.forms import JobForm, ContactForm, LocationForm, EmployerForm
+from djobs.models import Job, JobCategory, Employer, EmployerLogo, Location
 import datetime
 
 def category_jobs(request, slug, **kwargs):
@@ -106,6 +107,9 @@ def edit_job(request, job_id, **kwargs):
     """
     template_name = kwargs.get("template_name", "djobs/job_form.html")
     job = get_object_or_404(Job, pk=job_id)
+
+    if request.user != job.employer.administrator:
+        return HttpResponseForbidden()
     
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
@@ -159,6 +163,85 @@ def edit_job(request, job_id, **kwargs):
             'job_form': job_form,
             'location_form': location_form,
             'contact_form': contact_form,
+            'add': False,
+        }, context_instance=RequestContext(request)
+    )
+    
+def create_employer(request, **kwargs):
+    """
+    employer creation 
+    """
+    template_name = kwargs.get("template_name", "djobs/employer_form.html")
+    
+    if request.method == 'POST':
+        employer_form = EmployerForm(request.POST, request.FILES)
+        
+        if employer_form.is_valid():
+            employer_name = employer_form.cleaned_data['name']
+            profile = employer_form.cleaned_data['profile']
+            logo = employer_form.cleaned_data['logo']
+        
+            new_employer_logo = EmployerLogo.objects.create(
+                name="%s's logo" % employer_name,
+                original_image=logo,
+                caption="%s's logo" % employer_name,
+            )
+        
+            new_employer = Employer.objects.create(
+                name=employer_name,
+                slug=slugify(employer_name),
+                logo=new_employer_logo,
+                profile=profile,
+                administrator=request.user
+            )
+            
+            return HttpResponseRedirect(reverse('djobs_edit_employer',
+                args=[new_employer.id]
+            ))
+    else:
+        employer_form = EmployerForm()
+    
+    return render_to_response(template_name, {
+        'employer_form': employer_form,
+        'add': True,
+        }, context_instance=RequestContext(request)
+    )
+    
+def edit_employer(request, employer_id, **kwargs):
+    """
+    employer editing/updating
+    """
+    template_name = kwargs.get("template_name", "djobs/employer_form.html")
+    employer = get_object_or_404(Employer, pk=employer_id)
+    
+    if request.user != employer.administrator:
+        return HttpResponseForbidden()
+    
+    if request.method == 'POST':
+        employer_form = EmployerForm(request.POST)
+
+        if employer_form.is_valid():
+            employer.name = employer_form.cleaned_data['name']
+            employer.profile = employer_form.cleaned_data['profile']
+            
+            if employer_form.cleaned_data['logo']:
+                employer.logo = employer_form.cleaned_data['logo']
+            elif employer.logo:
+                employer.logo = employer.logo
+                  
+            employer.save()
+            
+            return HttpResponseRedirect(reverse('djobs_edit_employer',
+                args=[employer.id]
+            ))
+    else:
+        employer_form = EmployerForm({'name': employer.name, 
+            'profile': employer.profile,
+            'logo': employer.logo,
+        })
+       
+    return render_to_response(template_name, {
+            'employer_form': employer_form,
             'add': False,
         }, context_instance=RequestContext(request)
     )
