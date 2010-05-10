@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Your account {{ account }} has now been activated.</p>
+<p>
+	Before you can add jobs to the system you must
+	add an employer to your account <a href="{% url djobs_create_employer %}">here</a>.
+</p>
+{% endblock %}
