@@ -1,7 +1,19 @@
 * {
 	margin: 0;
 	padding: 0 }
- 
+	
+.form dd { margin: 0 0 15px; position: relative; }
+
+.form label { font-weight: normal; color: #4F4F4F; } 
+
+.form input, .form select, .form textarea { width: 97%; padding: 4px 3px; font-size: 1.2em; margin: 0; }
+
+.form .submit { width: 50%; margin: 0 auto; }
+	
+.form ul.errors { list-style-type: none; margin: 0; padding: 0 }
+	
+	.form ul.errors li { color: #CC0000; font-style: italic; font-family: garamond, georgia, serif }
+	 
 body { color: #0F0F0F }
  
 h1 { font-size: 1.5em; }
