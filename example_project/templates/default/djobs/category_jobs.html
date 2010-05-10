@@ -18,7 +18,7 @@
 				<li>{{ object.get_employment_type_display }} </li>
 				<li>{{ object.get_employment_level_display }}</li>
 			</ul>
-			<p>{{ object.description|safe|striptags|truncatewords:"30" }} <a href="{{ object.get_absolute_url }}">more</a> </p>
+			<p>{{ object.description_html|safe|striptags|truncatewords:"30" }} <a href="{{ object.get_absolute_url }}">more</a> </p>
 		</li>
 	{% endfor %}
 	
