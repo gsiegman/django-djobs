@@ -195,7 +195,7 @@ def delete_job(request, job_id, **kwargs):
         object_id=job_id,
         template_object_name='job',
         template_name=template_name,
-        post_delete_redirect='/manage/'
+        post_delete_redirect=reverse('djobs_manage')
     )
     
 def create_employer(request, **kwargs):
