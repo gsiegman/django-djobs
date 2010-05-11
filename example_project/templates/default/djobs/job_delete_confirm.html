@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<p>Are you sure you wish to delete the job {{ job }}?</p>
-	<form method="post" action="">
-		<input type="submit" value="Confirm deletion">
+<div class="main-content">
+	<p>Are you sure you want to permanently delete the job entitled <strong>{{ job }}</strong>?</p>
+	<form class="form" method="post" action="">
+		<input class="submit" type="submit" value="Yes, delete job">
 	</form>
+</div>
+<div class="sidebar"></div>
 {% endblock %}
