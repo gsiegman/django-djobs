@@ -121,7 +121,7 @@ class Employer(models.Model):
         return self.name
         
     def get_absolute_url(self):
-        return reverse('djobs_employer_jobs',
+        return reverse('djobs_employer_detail',
             args=[self.id]
         )
 

@@ -22,8 +22,8 @@ def category_jobs(request, slug, **kwargs):
         extra_context={'category': category}
     )
     
-def employer_jobs(request, id, **kwargs):
-    template_name = kwargs.get("template_name", "djobs/employer_jobs.html")
+def employer_detail(request, id, **kwargs):
+    template_name = kwargs.get("template_name", "djobs/employer_detail.html")
     
     employer = get_object_or_404(Employer, pk=id)
     jobs = Job.active.filter(employer=employer)
@@ -83,7 +83,7 @@ def create_job(request, **kwargs):
                 contact=contact
             )
             
-            return HttpResponseRedirect(reverse('djobs_edit_job',
+            return HttpResponseRedirect(reverse('djobs_job_detail',
                 args=[new_job.id]
             ))
     else:
@@ -135,7 +135,7 @@ def edit_job(request, job_id, **kwargs):
             
             job.save()
             
-            return HttpResponseRedirect(reverse('djobs_edit_job',
+            return HttpResponseRedirect(reverse('djobs_job_detail',
                 args=[job.id]
             ))
     else:
@@ -195,7 +195,7 @@ def create_employer(request, **kwargs):
                 administrator=request.user
             )
             
-            return HttpResponseRedirect(reverse('djobs_edit_employer',
+            return HttpResponseRedirect(reverse('djobs_employer_detail',
                 args=[new_employer.id]
             ))
     else:
@@ -231,7 +231,7 @@ def edit_employer(request, employer_id, **kwargs):
                   
             employer.save()
             
-            return HttpResponseRedirect(reverse('djobs_edit_employer',
+            return HttpResponseRedirect(reverse('djobs_employer_detail',
                 args=[employer.id]
             ))
     else:

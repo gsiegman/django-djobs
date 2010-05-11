@@ -17,13 +17,13 @@ urlpatterns += patterns('djobs.views',
         name='djobs_category_jobs'
     ),
     url(r'^employers/(?P<id>\d+)/$', 
-        'employer_jobs', 
-        name='djobs_employer_jobs'
+        'employer_detail', 
+        name='djobs_employer_detail'
     ),
     url(r'^jobs/(?P<id>\d+)/$', 
         'job_detail', 
         name='djobs_job_detail'
-    ),   
+    ),
 )
 
 urlpatterns += patterns('',
