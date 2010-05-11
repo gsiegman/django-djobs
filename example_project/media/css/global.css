@@ -2,6 +2,8 @@
 	margin: 0;
 	padding: 0 }
 	
+span.required { color: #DF0000; font-weight: bold; margin: 0 .25em; }
+	
 .form dd { margin: 0 0 15px; position: relative; }
 
 .form label { font-weight: normal; color: #4F4F4F; } 
