@@ -40,6 +40,11 @@
 	</form>
 </div>
 <div class="sidebar">
-
+	<h3>More Information</h3>
+	{% if add %}
+	<p>You must first create an employer before you can create a job. Be sure to include any relevant information applicable to job seekers, including company history; contact information can be added to each job posting. Jobs listed with this employer will be listed on the employer detail page.  Required fields are indicated by a red asterisk.</p>
+	{% else %}
+	<p>You may make changes to this employer's profile. It is to your advantage to provide as detailed information as possible. Please be sure to fill in all required fields, which are indicated by a red asterisk.</p>
+	{% endif %}
 </div>
 {% endblock %}

@@ -59,6 +59,10 @@
 </div>
 <div class="sidebar">
 	<h3>More Information</h3>
-	<p>Please be sure to include all relevant information. Jobs will be automatically approved and immediately visible on the site.</p>
+	{% if add %}
+	<p>Here you can create a new job. Please be sure to include detailed information about the position, such as job roles and responsibilities, required qualifications or salary and benefits. Jobs will be automatically approved and immediately visible on the site. Required fields are marked with a red asterisk. If you are unable to select an employer, please <a href="{% url djobs_create_employer %}">click here to create a new employer</a>.</p>
+	{% else %}
+	<p>Here you can edit this job's information. Please ensure that you have filled in all required fields, which are indicated by a red asterisk. If you are adding a new position, please <a href="{% url djobs_create_job %}">click here to add a new job</a>.</p>
+	{% endif %}
 </div>
 {% endblock %}
