@@ -1,20 +1,34 @@
 {% extends "base.html" %}
 
+{% block title %}
+	Manage account
+{% endblock %}
+
 {% block content %}
-	<ul id="jobs">
-		Jobs:
-		{% for job in jobs %}
-		<li>
-			<a href="{{ job.get_absolute_url }}">{{ job.title }}</a>
+	<h2>Manage account</h2>
+	<p>Listed below are employers and jobs that you manage.</p>
+	
+	<h3>Employers</h3>
+	<ul id="employers" class="employer-table">
+		{% for employer in employers %}
+		<li class="{% cycle 'row-1'  'row-2' %} clearfix">
+			<h4><a href="{{ employer.get_absolute_url }}">{{ employer.name }}</a></h4>
+			<ul class="clearfix">
+				<li><a href="/employers/edit/{{ employer.id }}">Edit</a></li>
+			</ul>
 		</li>
 		{% endfor %}
 	</ul>
 	
-	<ul id="employers">
-		Employers:
-		{% for employer in employers %}
-		<li>
-			<a href="{{ employer.get_absolute_url }}">{{ employer.name }}</a>
+	<h3>Jobs</h3>
+	<ul id="jobs" class="employer-table">
+		{% for job in jobs %}
+		<li class="{% cycle 'row-1'  'row-2' %} clearfix">
+			<h4><a href="{{ job.get_absolute_url }}">{{ job.title }}</a></h4>
+			<ul class="clearfix">
+				<li><a href="/jobs/edit/{{ job.id }}">Edit</a></li>
+				<li><a href="/jobs/delete/{{ job.id }}">Delete</a></li>
+			</ul>
 		</li>
 		{% endfor %}
 	</ul>
