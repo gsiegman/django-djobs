@@ -17,6 +17,11 @@
 	<label for="job_description">Description:</label>
 	<p id="job_description">{{ object.description_html|safe }}</p>
 	{% endif %}
+	
+	{% if object.location %}
+	<label for="job_location">Location:</label>
+	<p id="job_location">{{ object.location }}</p>
+	{% endif %}
 
 	{% if object.category %}
 	<label for="job_category">Category:</label>
@@ -59,11 +64,6 @@
 		{% endif %}
 		
 	</p>
-	
-	{% if object.location %}
-	<label for="job_location">Location:</label>
-	<p id="job_location">{{ object.location }}</p>
-	{% endif %}
 	
 </div>
 <div class="sidebar">
