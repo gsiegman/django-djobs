@@ -84,8 +84,9 @@
 	
 	<h3>Actions</h3>
 	<ul>
-		<li><a href="/jobs/edit/{{ object.id }}">Edit job</a></li>
-		<li><a href="/jobs/edit/{{ object.id }}">Edit employer</a></li>
+		<li><a href="{% url djobs_edit_job object.id %}">Edit job</a></li>
+		<li><a href="{% url djobs_delete_job object.id %}">Delete job</a></li>
+		<li><a href="{% url djobs_edit_employer object.employer.id %}">Edit employer</a></li>
 	</ul>
 	
 	{% endif %}

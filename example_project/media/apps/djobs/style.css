@@ -51,7 +51,8 @@ li.job > p { clear: both; }
 	.employer-table li h4 {
 		margin: 0;
 		display: inline-block;
-		float: left; }
+		float: left;
+		font-size: 1em;		}
  
 		.employer-table li h4 em { font-size: .75em; }
  
@@ -72,3 +73,5 @@ li.job > p { clear: both; }
 			float: left;
 			padding-left: 15px;
 			font-size: .9em; }
+			
+.add-new { margin: 1em 0; text-align: right; font-weight: bold; font-size: 1.1em; }

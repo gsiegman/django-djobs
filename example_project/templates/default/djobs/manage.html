@@ -14,11 +14,12 @@
 		<li class="{% cycle 'row-1'  'row-2' %} clearfix">
 			<h4><a href="{{ employer.get_absolute_url }}">{{ employer.name }}</a></h4>
 			<ul class="clearfix">
-				<li><a href="/employers/edit/{{ employer.id }}">Edit</a></li>
+				<li><a href="{% url djobs_edit_employer employer.id %}">Edit</a></li>
 			</ul>
 		</li>
 		{% endfor %}
 	</ul>
+	<p class="add-new"><a href="{% url djobs_create_employer %}">Add employer &raquo;</a></p>
 	
 	<h3>Jobs</h3>
 	<ul id="jobs" class="employer-table">
@@ -26,10 +27,11 @@
 		<li class="{% cycle 'row-1'  'row-2' %} clearfix">
 			<h4><a href="{{ job.get_absolute_url }}">{{ job.title }} at {{ job.employer.name }}</a></h4>
 			<ul class="clearfix">
-				<li><a href="/jobs/edit/{{ job.id }}">Edit</a></li>
-				<li><a href="/jobs/delete/{{ job.id }}">Delete</a></li>
+				<li><a href="{% url djobs_edit_job job.id %}">Edit</a></li>
+				<li><a href="{% url djobs_delete_job job.id %}">Delete</a></li>
 			</ul>
 		</li>
 		{% endfor %}
 	</ul>
+	<p class="add-new"><a href="{% url djobs_create_job %}">Add job  &raquo;</a></p>
 {% endblock %}
