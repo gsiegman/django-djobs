@@ -29,13 +29,22 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('djobs', ['Contact'])
 
+        # Adding model 'EmployerLogo'
+        db.create_table('djobs_employerlogo', (
+            ('original_image', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('caption', self.gf('django.db.models.fields.TextField')()),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
+        ))
+        db.send_create_signal('djobs', ['EmployerLogo'])
+
         # Adding model 'Employer'
         db.create_table('djobs_employer', (
             ('profile', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('administrator', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('logo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('logo', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['djobs.EmployerLogo'])),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50, db_index=True)),
         ))
         db.send_create_signal('djobs', ['Employer'])
@@ -53,10 +62,11 @@ class Migration(SchemaMigration):
             ('category', self.gf('django.db.models.fields.related.ForeignKey')(related_name='jobs', to=orm['djobs.JobCategory'])),
             ('allow_applications', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True)),
             ('description', self.gf('django.db.models.fields.TextField')()),
+            ('description_html', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('employment_type', self.gf('django.db.models.fields.CharField')(max_length=5)),
             ('employment_level', self.gf('django.db.models.fields.CharField')(max_length=5)),
-            ('employer', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['djobs.Employer'])),
+            ('employer', self.gf('django.db.models.fields.related.ForeignKey')(related_name='jobs', to=orm['djobs.Employer'])),
             ('contact', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['djobs.Contact'])),
             ('location', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['djobs.Location'])),
             ('created_date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
@@ -72,6 +82,9 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Contact'
         db.delete_table('djobs_contact')
+
+        # Deleting model 'EmployerLogo'
+        db.delete_table('djobs_employerlogo')
 
         # Deleting model 'Employer'
         db.delete_table('djobs_employer')
@@ -133,10 +146,17 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Employer'},
             'administrator': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'logo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'logo': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['djobs.EmployerLogo']"}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'profile': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'})
+        },
+        'djobs.employerlogo': {
+            'Meta': {'object_name': 'EmployerLogo'},
+            'caption': ('django.db.models.fields.TextField', [], {}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'original_image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'})
         },
         'djobs.job': {
             'Meta': {'object_name': 'Job'},
@@ -145,7 +165,8 @@ class Migration(SchemaMigration):
             'contact': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['djobs.Contact']"}),
             'created_date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {}),
-            'employer': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['djobs.Employer']"}),
+            'description_html': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'employer': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'jobs'", 'to': "orm['djobs.Employer']"}),
             'employment_level': ('django.db.models.fields.CharField', [], {'max_length': '5'}),
             'employment_type': ('django.db.models.fields.CharField', [], {'max_length': '5'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
