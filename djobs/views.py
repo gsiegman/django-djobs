@@ -44,6 +44,18 @@ def job_detail(request, id, **kwargs):
         queryset=jobs, 
         object_id=id, 
         template_name=template_name)
+
+def manage(request, **kwargs):
+    template_name = kwargs.get("template_name", "djobs/manage.html")
+    
+    jobs = Job.active.filter(employer__administrator=request.user)
+    employers = Employer.objects.filter(administrator=request.user)
+    
+    return render_to_response(template_name, {
+            'jobs': jobs,
+            'employers': employers,
+        }, context_instance=RequestContext(request)
+    )
         
 def create_job(request, **kwargs):
     """

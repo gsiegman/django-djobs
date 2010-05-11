@@ -24,6 +24,10 @@ urlpatterns += patterns('djobs.views',
         'job_detail', 
         name='djobs_job_detail'
     ),
+    url(r'^manage/$',
+        'manage',
+        name='djobs_manage',
+    ),
 )
 
 urlpatterns += patterns('',
