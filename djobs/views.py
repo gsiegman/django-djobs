@@ -2,7 +2,7 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.template import RequestContext, loader
 from django.template.defaultfilters import slugify
 from django.views.generic.list_detail import object_list, object_detail
 from django.views.generic.create_update import delete_object
@@ -122,7 +122,11 @@ def edit_job(request, job_id, **kwargs):
     job = get_object_or_404(Job, pk=job_id)
 
     if request.user != job.employer.administrator:
-        return HttpResponseForbidden()
+        httpresponse_kwargs = {'mimetype': kwargs.pop('mimetype', None)}
+        return HttpResponseForbidden(loader.render_to_string('403.html', 
+            context_instance=RequestContext(request), **kwargs), 
+            **httpresponse_kwargs
+        )
     
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
@@ -188,7 +192,11 @@ def delete_job(request, job_id, **kwargs):
     job = get_object_or_404(Job, pk=job_id)
 
     if request.user != job.employer.administrator:
-        return HttpResponseForbidden()
+        httpresponse_kwargs = {'mimetype': kwargs.pop('mimetype', None)}
+        return HttpResponseForbidden(loader.render_to_string('403.html', 
+            context_instance=RequestContext(request), **kwargs), 
+            **httpresponse_kwargs
+        )
     
     return delete_object(request,
         model=Job,
@@ -246,7 +254,11 @@ def edit_employer(request, employer_id, **kwargs):
     employer = get_object_or_404(Employer, pk=employer_id)
     
     if request.user != employer.administrator:
-        return HttpResponseForbidden()
+        httpresponse_kwargs = {'mimetype': kwargs.pop('mimetype', None)}
+        return HttpResponseForbidden(loader.render_to_string('403.html', 
+            context_instance=RequestContext(request), **kwargs), 
+            **httpresponse_kwargs
+        )
     
     if request.method == 'POST':
         employer_form = EmployerForm(request.POST)
