@@ -28,6 +28,10 @@ urlpatterns += patterns('djobs.views',
         'manage',
         name='djobs_manage',
     ),
+    url(r'^search/$',
+        'search',
+        name='djobs_search',
+    ),
 )
 
 urlpatterns += patterns('',

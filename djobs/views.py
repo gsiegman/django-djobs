@@ -1,4 +1,5 @@
 from django.core.urlresolvers import reverse
+from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -255,5 +256,27 @@ def edit_employer(request, employer_id, **kwargs):
     return render_to_response(template_name, {
             'employer_form': employer_form,
             'add': False,
+        }, context_instance=RequestContext(request)
+    )
+    
+def search(request, **kwargs):
+    """
+    keyword search on jobs and employers
+    """
+    template_name = kwargs.get("template_name", "djobs/search_results.html")
+    
+    search_query = request.GET.get("search", "")
+    
+    job_results = Job.objects.filter(
+        Q(description__icontains=search_query) | Q(title__icontains=search_query)
+    )
+    
+    employer_results = Employer.objects.filter(
+        Q(name__icontains=search_query) | Q(profile__icontains=search_query)
+    )
+    
+    return render_to_response(template_name, {
+            'job_results': job_results,
+            'employer_results': employer_results,
         }, context_instance=RequestContext(request)
     )
