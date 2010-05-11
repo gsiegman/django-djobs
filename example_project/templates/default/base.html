@@ -13,9 +13,9 @@
     <body class="mwcradio">
 		<ul class="reverse top-bar clearfix">
 			{% if user.is_authenticated %}
-			<li><a href="{% url djobs_manage %}">Manage Account</a></li>
-			<li><a href="/accounts/password/change">Change Password</a></li>
 			<li><a href="/accounts/logout">Log Out</a></li>
+			<li><a href="/accounts/password/change">Change Password</a></li>
+			<li><a href="{% url djobs_manage %}">Manage Account</a></li>
 			{% else %}
 			<li><a href="/accounts/login">Log In</a></li>
 			<li><a href="/accounts/register">Register</a></li>
