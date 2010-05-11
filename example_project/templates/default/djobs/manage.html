@@ -9,6 +9,7 @@
 	<p>Listed below are employers and jobs that you manage.</p>
 	
 	<h3>Employers</h3>
+	{% if employers %}
 	<ul id="employers" class="employer-table">
 		{% for employer in employers %}
 		<li class="{% cycle 'row-1'  'row-2' %} clearfix">
@@ -21,7 +22,12 @@
 	</ul>
 	<p class="add-new"><a href="{% url djobs_create_employer %}">Add employer &raquo;</a></p>
 	
+	{% else %}
+	<div class="notice">You haven't created any employers. <a href="{% url djobs_create_employer %}">Click here to create your first employer.</a></div>
+	{% endif %}
+	
 	<h3>Jobs</h3>
+	{% if jobs %}
 	<ul id="jobs" class="employer-table">
 		{% for job in jobs %}
 		<li class="{% cycle 'row-1'  'row-2' %} clearfix">
@@ -34,4 +40,8 @@
 		{% endfor %}
 	</ul>
 	<p class="add-new"><a href="{% url djobs_create_job %}">Add job  &raquo;</a></p>
+	
+	{% else %}
+	<div class="notice">You haven't created any jobs. <a href="{% url djobs_create_job %}">Click here to create your first job.</a></div>
+	{% endif %}
 {% endblock %}
