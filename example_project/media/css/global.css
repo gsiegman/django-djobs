@@ -43,9 +43,11 @@ h2 { font-size: 1.4em; }
  
 h3 { font-size: 1.25em }
  
-a:link, a:active { color: #29866b; }
+a:link, a:active { color: #29866b; text-decoration: none; }
  
-a:visited, a:hover { color: #864958; }
+a:visited { color: #864958;  text-decoration: none; }
+ 
+a:hover { color: #864958; text-decoration: underline; }
  
 .header-inner, .wrap-inner {
 	width: 960px;
@@ -72,7 +74,7 @@ a:visited, a:hover { color: #864958; }
 		cursor: pointer;
 		height: 30px;
 		width: 30px; 
-		background: transparent url("../img/search.gif") no-repeat;
+		background: transparent url("../img/search.png") no-repeat;
 		border: 0; }
  
 #nav { padding: 1% 0; }

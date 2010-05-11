@@ -72,20 +72,22 @@
 	
 	<img class="employer-image" src="{{ object.employer.logo.display.url }}" alt="{{ object.employer }}" />
 
-	{% if user == object.employer.administrator %}
-	
-	<h3>Actions</h3>
-	<ul>
-		<li><a href="/jobs/edit/{{ object.id }}">Edit</a></li>
-	</ul>
-	{% endif %}
-
 	<h3>{{ object.employer }}</h3>
 	
 	{% if object.employer.profile %}
 	<p>
 		{{ object.employer.profile|truncatewords:"50" }} <a href="{{ object.employer.get_absolute_url }}">more...</a>
 	</p>
+	{% endif %}
+
+	{% if user == object.employer.administrator %}
+	
+	<h3>Actions</h3>
+	<ul>
+		<li><a href="/jobs/edit/{{ object.id }}">Edit job</a></li>
+		<li><a href="/jobs/edit/{{ object.id }}">Edit employer</a></li>
+	</ul>
+	
 	{% endif %}
 	
 </div>
