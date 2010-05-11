@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<ul id="jobs">
+		Jobs:
+		{% for job in jobs %}
+		<li>
+			<a href="{{ job.get_absolute_url }}">{{ job.title }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+	
+	<ul id="employers">
+		Employers:
+		{% for employer in employers %}
+		<li>
+			<a href="{{ employer.get_absolute_url }}">{{ employer.name }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
