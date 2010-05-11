@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.views.generic.list_detail import object_list, object_detail
-from django.views.generic.create_update import create_object, update_object
+from django.views.generic.create_update import delete_object
 from djobs.forms import JobForm, ContactForm, LocationForm, EmployerForm
 from djobs.models import Job, JobCategory, Employer, EmployerLogo, Location
 import datetime
@@ -178,6 +178,24 @@ def edit_job(request, job_id, **kwargs):
             'contact_form': contact_form,
             'add': False,
         }, context_instance=RequestContext(request)
+    )
+
+def delete_job(request, job_id, **kwargs):
+    """
+    job deletion
+    """
+    template_name = kwargs.get("template_name", "djobs/job_delete_confirm.html")
+    job = get_object_or_404(Job, pk=job_id)
+
+    if request.user != job.employer.administrator:
+        return HttpResponseForbidden()
+    
+    return delete_object(request,
+        model=Job,
+        object_id=job_id,
+        template_object_name='job',
+        template_name=template_name,
+        post_delete_redirect='/manage/'
     )
     
 def create_employer(request, **kwargs):
