@@ -22,7 +22,10 @@
 		
 		<p>Whether you're new to the job market or looking to advance in your current career, <a href="/">midwestcareers.com</a> is the source for pursuing your career goals.</p>
 		
+		{% if user.is_authenticated %}
+		{% else %}
 		<p>If you're an employer and you'd like to post your openings with us, <a href="/accounts/register">click here to register</a>.</p>
+		{% endif %}
 		
 		{% get_recent_jobs 10 as recent_jobs %}
 		{% if recent_jobs %}
