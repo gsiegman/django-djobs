@@ -276,6 +276,7 @@ def search(request, **kwargs):
     )
     
     return render_to_response(template_name, {
+            'search_query': search_query,
             'job_results': job_results,
             'employer_results': employer_results,
         }, context_instance=RequestContext(request)
