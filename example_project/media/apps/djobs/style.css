@@ -40,4 +40,18 @@ li.job > ul {
 	padding: 0;
 	list-style-type: none; }
  
+ .employer-table { list-style-type: none; padding: 0; margin: 0; }
  
+ .employer-table > li { padding: 5px 6px; }
+ 
+	.employer-table li h4 { margin: 0; display: inline-block; float: left; }
+	
+		.employer-table li h4 a { color: #0F0F0F; text-decoration: none; }
+	
+			.employer-table li h4 a:hover { text-decoration: underline; }
+	
+	 .employer-table li ul { margin: 0; padding: 0; list-style-type: none; float: right; display: inline-block; }
+	
+		.employer-table li ul li { float: left; padding-left: 15px; font-size: .9em;}
+ 
+ .row-1 { background-color: #eee; }

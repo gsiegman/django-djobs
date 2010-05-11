@@ -13,6 +13,7 @@
     <body class="mwcradio">
 		<ul class="reverse top-bar clearfix">
 			{% if user.is_authenticated %}
+			<li><a href="/manage">Manage Account</a></li>
 			<li><a href="/accounts/password/change">Change Password</a></li>
 			<li><a href="/accounts/password/reset">Reset Password</a></li>
 			<li><a href="/accounts/logout">Log Out</a></li>
