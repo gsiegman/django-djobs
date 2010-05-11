@@ -39,6 +39,9 @@
 	
 </div>
 <div class="sidebar">
+	
+	{% include "search.html" %}
+		
 	<img class="employer-image" src="{{ employer.logo.display.url }}" alt="{{ employer }}" />
 
 	{% if user == employer.administrator %}

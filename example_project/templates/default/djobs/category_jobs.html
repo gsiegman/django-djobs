@@ -37,6 +37,8 @@
 </div>
 <div class="sidebar">
 	
+	{% include "search.html" %}
+	
 	{% get_recent_jobs_for_obj category 10 as recent_jobs %}
 	{% if  recent_jobs %}
 	

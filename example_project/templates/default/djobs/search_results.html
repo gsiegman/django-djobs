@@ -1,23 +1,64 @@
 {% extends "base.html" %}
 
+{% block title %}
+	Search results for "{{ search_query }}"
+{% endblock %}
+
 {% block content %}
-	<h1>Search Results</h1>
+	<h2>Search Results for "{{ search_query }}"</h2>
 	
-	<h2>Jobs:</h2>
-	<ul id="job-results">
-	{% for job in job_results %}
-		<li>
-			<a href="{{ job.get_absolute_url }}">{{ job.title }}</a>
+	{% ifequal search_query "" %}
+	
+	<div class="notice">
+		Please go back and enter a search term.
+	</div>
+	
+	{% else %}
+	
+	<h3>Jobs</h3>
+	
+	{% if job_results %}
+	
+	<ul id="job-results" class="employer-table">
+	
+		{% for job in job_results %}
+		<li class="{% cycle 'row-1'  'row-2' %} clearfix">
+			<a href="{{ job.get_absolute_url }}">{{ job.title }} at {{ job.employer.name }}</a>
 		</li>
-	{% endfor %}
+		{% endfor %}
+	
 	</ul>
 	
-	<h2>Employers:</h2>
-	<ul id="employer-results">
-	{% for employer in employer_results %}
-		<li>
+	{% else %}
+	
+	<div class="notice">
+		Sorry, no jobs were found for the phrase "{{ search_query }}".
+	</div>
+	
+	{% endif %}
+	
+	<h3>Employers</h3>
+	
+	{% if  employer_results  %}
+	
+	<ul id="employer-results" class="employer-table">
+	
+		{% for employer in employer_results %}
+		<li class="{% cycle 'row-1'  'row-2' %} clearfix">
 			<a href="{{ employer.get_absolute_url }}">{{ employer.name }}</a>
 		</li>
-	{% endfor %}
+		{% endfor %}
+	
 	</ul>
+	
+	{% else %}
+	
+	<div class="notice">
+		Sorry, no employers were found for the phrase "{{ search_query }}".
+	</div>
+	
+	{% endif %}
+	
+	{% endifequal %}
+	
 {% endblock %}
