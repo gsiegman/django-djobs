@@ -39,7 +39,7 @@
 	
 	{% include "search.html" %}
 	
-	{% get_recent_jobs_for_obj category 10 as recent_jobs %}
+	{% get_recent_jobs_for_obj category 5 as recent_jobs %}
 	{% if  recent_jobs %}
 	
 	<h3>Recently added in {{ category }}</h2>
