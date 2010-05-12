@@ -96,7 +96,8 @@ a:hover {
 	.search input {
 		font-size: 1.2em;
 		margin: 20px 0 0 0;
-		padding: 4px 3px; }
+		padding: 4px 3px;
+		width: 250px; }
  
 	.search button.submit {
 		background: transparent url("../img/search.png") no-repeat;
@@ -184,10 +185,13 @@ a:hover {
 .clearfix:after {
 	clear: both;
 	content: ".";
-	display: block;
 	height: 0;
 	visibility: hidden; }
- 
+	
+.clearfix {display:inline-block;}
+/* Hide from IE Mac \*/
+.clearfix {display:block;}
+/* End hide from IE Mac */
 .row-1 { background-color: #eee; }
  
 span.required {
