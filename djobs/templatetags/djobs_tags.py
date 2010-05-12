@@ -6,7 +6,20 @@ register = template.Library()
 
 def job_categories():
     categories = JobCategory.objects.all()
-    return {'categories': categories}
+    categories_with_jobs = []
+    categories_no_jobs = []
+    
+    for category in categories:
+        if category.active_job_count == 0:
+            categories_no_jobs.append(category)
+        else:
+            categories_with_jobs.append(category)
+    
+    return {
+        'categories': categories,
+        'categories_with_jobs': categories_with_jobs,
+        'categories_no_jobs': categories_no_jobs,
+    }
 
 register.inclusion_tag('djobs/categories.html')(job_categories)
 
