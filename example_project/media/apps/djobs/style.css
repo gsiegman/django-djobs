@@ -9,7 +9,7 @@ ul#categories li.category {
 	width: 50%;
 	float: left; }
  
-.employer-image { margin-bottom: 20px; }
+.employer-image { margin-bottom: 20px; clear: both; }
  
 .sidebar > ul {
 	list-style-type: none;

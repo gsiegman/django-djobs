@@ -74,7 +74,9 @@
 	
 	{% include "search.html" %}
 	
-	<img class="employer-image" src="{{ object.employer.logo.display.url }}" alt="{{ object.employer }}" />
+	<a class="employer-image" href="{{ object.employer.get_absolute_url }}">
+		<img src="{{ object.employer.logo.display.url }}" alt="{{ object.employer }}" />
+	</a>
 
 	<h3>{{ object.employer }}</h3>
 	

@@ -89,9 +89,9 @@ a:hover {
 	.wrap-inner .executives .column dd { margin: 0; }
  
 .search {
-	float: right;
 	margin: 0 0 2em 0;
-	width: 100%; }
+	width: 100%;
+	clear: both; }
  
 	.search input {
 		font-size: 1.2em;
