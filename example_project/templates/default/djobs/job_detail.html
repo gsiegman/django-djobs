@@ -4,6 +4,10 @@
 	{{ object.title }}
 {% endblock %}
 
+{% block metadescription %}
+	<meta name="description" content="{{ object.description|striptags|truncatewords:'20' }}" />
+{% endblock %}
+
 {% block content %}
 <div class="main-content">
 	<h2>{{ object.title }}</h2>

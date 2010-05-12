@@ -4,6 +4,10 @@
 	{{ employer }}
 {% endblock %}
 
+{% block metadescription %}
+	<meta name="description" content="{{ employer.profile|striptags|truncatewords:'20' }}" />
+{% endblock %}
+
 {% block content %}
 <div class="main-content">
 	<h2>{{ employer }}</h2>
