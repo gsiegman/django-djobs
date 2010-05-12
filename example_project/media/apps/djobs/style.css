@@ -74,6 +74,14 @@ li.job > p { clear: both; }
 			padding-left: 15px;
 			font-size: .9em; }
 			
-.add-new { margin: 1em 0; text-align: right; font-weight: bold; font-size: 1.1em; }
+.add-new { 
+	margin: 1em 0; 
+	text-align: right; 
+	font-weight: bold; 
+	font-size: 1.1em; }
 
-.date-added { font-style: italic; font-size: .8em; }
+.date-added { 
+	font-style: italic; 
+	font-size: .8em; 
+	margin-left: .5em; 
+	color: #969696; }
