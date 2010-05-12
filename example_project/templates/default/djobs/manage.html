@@ -31,7 +31,7 @@
 	<ul id="jobs" class="employer-table">
 		{% for job in jobs %}
 		<li class="{% cycle 'row-1'  'row-2' %} clearfix">
-			<h4><a href="{{ job.get_absolute_url }}">{{ job.title }} at {{ job.employer.name }}</a></h4>
+			<h4><a href="{{ job.get_absolute_url }}">{{ job.title }} at {{ job.employer.name }}</a><span class="date-added">Added {{ job.created_date|timesince }} ago</span></h4>
 			<ul class="clearfix">
 				<li><a href="{% url djobs_edit_job job.id %}">Edit</a></li>
 				<li><a href="{% url djobs_delete_job job.id %}">Delete</a></li>
