@@ -111,6 +111,10 @@ class Employer(models.Model):
     profile = models.TextField(_('profile'), 
         blank=True
     )
+    profile_html = models.TextField(_('profile_html'),
+        editable=False,
+        blank=True
+    )
     administrator = models.ForeignKey(User)
     
     class Meta:
@@ -119,6 +123,12 @@ class Employer(models.Model):
         
     def __unicode__(self):
         return self.name
+        
+    def save(self, *args, **kwargs):
+        self.profile_html = markdown(self.profile)
+        super(Employer, self).save(kwargs.get('force_insert', False),
+            kwargs.get('force_update', False)
+        )
         
     def get_absolute_url(self):
         return reverse('djobs_employer_detail',
