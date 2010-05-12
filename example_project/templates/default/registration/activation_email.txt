@@ -1,0 +1,10 @@
+Thanks for registering with Midwestcareers.com! To confirm your registration and start posting job openings, please click the following link:
+
+http://{{ site.domain }}{% url registration_activate activation_key %}
+
+The above activation link will be valid for {{ expiration_days }} days.
+
+If you've received this e-mail in error, please disregard this message. 
+
+Thanks,
+The crew at Midwestcareers.com
