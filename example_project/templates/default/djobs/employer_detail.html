@@ -7,7 +7,7 @@
 {% block content %}
 <div class="main-content">
 	<h2>{{ employer }}</h2>
-	<p>{{ employer.profile }}</p>
+	<p>{{ employer.profile_html|safe }}</p>
 	
 	<h2>Listed Jobs</h2>
 	
