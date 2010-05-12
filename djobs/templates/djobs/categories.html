@@ -1,7 +1,16 @@
+<h3>Active Categories</h3>
 <ul id="categories">
-{% for category in categories %}
+{% for category in categories_with_jobs %}
 	<li class="category">
 		<a href="{{ category.get_absolute_url }}">{{ category }} ({{ category.active_job_count }})</a>
+	</li>
+{% endfor %}
+</ul>
+<h3>Additional Categories</h3>
+<ul id="categories">
+{% for category in categories_no_jobs %}
+	<li class="category">
+		<a href="{{ category.get_absolute_url }}">{{ category }}</a>
 	</li>
 {% endfor %}
 </ul>
